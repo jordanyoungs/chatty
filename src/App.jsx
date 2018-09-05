@@ -44,6 +44,7 @@ class App extends Component {
           currentUser={this.state.currentUser}
           handleMessage={this.handleMessage}
           handleNameChange={this.handleNameChange}
+          handleBothChange={this.handleBothChange}
         />
       </div>
     );
@@ -68,6 +69,25 @@ class App extends Component {
       content: `${this.state.currentUser.name} changed their name to ${username}`
     }
     const messages = [...this.state.messages, newMessage];
+    this.setState({
+      messages,
+      currentUser: {name: username}
+    });
+  }
+
+  handleBothChange = (username, content) => {
+    const newNotification = {
+      id: increasingId++,
+      type: 'notification',
+      content: `${this.state.currentUser.name} changed their name to ${username}`
+    }
+    const newMessage = {
+      id: increasingId++,
+      type: 'message',
+      username: username,
+      content
+    }
+    const messages = [...this.state.messages, newNotification, newMessage];
     this.setState({
       messages,
       currentUser: {name: username}
