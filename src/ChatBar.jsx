@@ -1,47 +1,25 @@
 import React from 'react';
 
-function ChatBar({currentUser, handleMessage}) {
+function ChatBar({currentUser, handleMessage, handleNameChange}) {
   const handleMessageKeyUp = event => {
     if (event.key === 'Enter') {
-      const type = 'message';
-      const username = currentUser.name;
       const content = event.target.value;
-
-      const message = {
-        type,
-        username,
-        content
-      }
-
-      handleMessage(message);
+      handleMessage(content);
       event.target.value = '';
     }
   }
 
   const handleNameKeyUp = event => {
-    if (event.key === 'Enter') {
-      const type = 'notification';
-      const username = event.target.value;
-      const content = `${currentUser.name} changed their name to ${username}`;
-
-    const message = {
-      type,
-      username,
-      content
-    }
-
-    handleMessage(message);
+    const username = event.target.value;
+    if (event.key === 'Enter' && username !== currentUser.name) {
+      handleNameChange(username);
     }
   }
 
-  const handleBlur = event => {
+  const handleNameBlur = event => {
     const username = event.target.value;
     if (username !== currentUser.name) {
-      handleMessage({
-        type: 'notification',
-        username,
-        content: `${currentUser.name} changed their name to ${username}`
-      });
+      handleNameChange(username);
     }
   }
 
@@ -50,7 +28,7 @@ function ChatBar({currentUser, handleMessage}) {
       <input
         className="chatbar-username"
         onKeyUp={handleNameKeyUp}
-        onBlur={handleBlur} defaultValue={currentUser.name}
+        onBlur={handleNameBlur} defaultValue={currentUser.name}
         placeholder="Your Name (Optional)"
       />
       <input

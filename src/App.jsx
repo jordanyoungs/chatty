@@ -42,12 +42,36 @@ class App extends Component {
     }, 3000);
   }
 
-  handleMessage = ({type, username, content}) => {
+  render() {
+    return (
+      <div>
+        <NavBar />
+        <MessageList messages={this.state.messages} />
+        <ChatBar
+          currentUser={this.state.currentUser}
+          handleMessage={this.handleMessage}
+          handleNameChange={this.handleNameChange}
+        />
+      </div>
+    );
+  }
+
+  handleMessage = content => {
     const newMessage = {
       id: increasingId++,
-      type,
-      username,
+      type: 'message',
+      username: this.state.currentUser.name,
       content
+    }
+    const messages = [...this.state.messages, newMessage];
+    this.setState({ messages });
+  }
+
+  handleNameChange = username => {
+    const newMessage = {
+      id: increasingId++,
+      type: 'notification',
+      content: `${this.state.currentUser.name} changed their name to ${username}`
     }
     const messages = [...this.state.messages, newMessage];
     this.setState({
@@ -55,16 +79,5 @@ class App extends Component {
       currentUser: {name: username}
     });
   }
-
-  render() {
-    return (
-      <div>
-        <NavBar />
-        <MessageList messages={this.state.messages} />
-        <ChatBar handleMessage={this.handleMessage} currentUser={this.state.currentUser} />
-      </div>
-    );
-  }
-
 }
 export default App;
