@@ -24,7 +24,7 @@ Some of the functionality the page has:
 
 ## Screenshots
 
-!["Screenshot of Home page"](https://github.com/jordanyoungs/tweeter/blob/master/docs/Home.png?raw=true)
-!["Screenshot during slide animation"](https://github.com/jordanyoungs/tweeter/blob/master/docs/Slide.png?raw=true)
-!["Screenshot after slide, form is hidden"](https://github.com/jordanyoungs/tweeter/blob/master/docs/Slide2.png?raw=true)
-!["Screenshot of Error message"](https://github.com/jordanyoungs/tweeter/blob/master/docs/Error.png?raw=true)
+!["Screenshot of two clients on load"](https://github.com/jordanyoungs/chatty/blob/master/docs/Home.png?raw=true)
+!["Screenshot of names changing"](https://github.com/jordanyoungs/chatty/blob/master/docs/NameChanges.png?raw=true)
+!["Screenshot of some messaging"](https://github.com/jordanyoungs/chatty/blob/master/docs/Messaging.png?raw=true)
+!["Screenshot of a client leaving"](https://github.com/jordanyoungs/chatty/blob/master/docs/Leaving.png?raw=true)
