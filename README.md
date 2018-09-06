@@ -4,11 +4,11 @@ Chatty is a single-page real-time chat app.
 
 This is a project I built as part of the web development bootcamp at Lighthouse Labs. I was able to practice React and use Websockets and a Websocket Server.
 
-Some of the functionality the page has:
--Messages are broadcast to all clients in real-time
--Users can change their name and a notification about the change will be broadcast
--Notifications are also broadcast when a user joins or leaves
--Each client is given a color, the color scheme is consistent across clients
+Some of the functionality the page has:  
+-Messages are broadcast to all clients in real-time  
+-Users can change their name and a notification about the change will be broadcast  
+-Notifications are also broadcast when a user joins or leaves  
+-Each client is given a color, the color scheme is consistent across clients  
 -The number of connected users is displayed in the top right
 
 ## Getting Started
