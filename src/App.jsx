@@ -58,6 +58,7 @@ class App extends Component {
   handleNameChange = username => {
     const newNotification = {
       type: 'notification',
+      username,
       content: `${this.state.clientName} changed their name to ${username}`
     }
     this.setState({clientName: username});
@@ -67,6 +68,7 @@ class App extends Component {
   handleBothChange = (username, content) => {
     const newNotification = {
       type: 'notification',
+      username,
       content: `${this.state.clientName} changed their name to ${username}`
     }
     this.setState({clientName: username});
