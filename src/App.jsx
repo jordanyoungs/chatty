@@ -7,22 +7,22 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentUser: {name: 'Bob'},
+      clientName: 'Anonymous',
       messages: [],
       numberOfUsers: 0
     };
   }
 
   componentDidMount() {
-    const socket = new WebSocket("ws://localhost:3001");
-    this.setState({ socket });
+    this.socket = new WebSocket("ws://localhost:3001");
 
-    socket.onmessage = event => {
+    this.socket.onmessage = event => {
       const messageArr = JSON.parse(event.data);
-      console.log(messageArr);
+      console.log(messageArr[0]);
+      //if the numberOfUsers has changed, update state
       if (messageArr[0].numberOfUsers) {
         this.setState({
-          numberOfUsers: messageArr[0].numberOfUsers
+          numberOfUsers: messageArr[0].numberOfUsers,
         });
       }
       this.setState({
@@ -37,7 +37,7 @@ class App extends Component {
         <NavBar numberOfUsers={this.state.numberOfUsers} />
         <MessageList messages={this.state.messages} />
         <ChatBar
-          currentUser={this.state.currentUser}
+          clientName={this.state.clientName}
           handleMessage={this.handleMessage}
           handleNameChange={this.handleNameChange}
           handleBothChange={this.handleBothChange}
@@ -49,33 +49,33 @@ class App extends Component {
   handleMessage = content => {
     const newMessage = {
       type: 'message',
-      username: this.state.currentUser.name,
+      username: this.state.clientName,
       content
     }
-    this.state.socket.send(JSON.stringify([newMessage]));
+    this.socket.send(JSON.stringify([newMessage]));
   }
 
   handleNameChange = username => {
     const newNotification = {
       type: 'notification',
-      content: `${this.state.currentUser.name} changed their name to ${username}`
+      content: `${this.state.clientName} changed their name to ${username}`
     }
-    this.setState({currentUser: {name: username}});
-    this.state.socket.send(JSON.stringify([newNotification]));
+    this.setState({clientName: username});
+    this.socket.send(JSON.stringify([newNotification]));
   }
 
   handleBothChange = (username, content) => {
     const newNotification = {
       type: 'notification',
-      content: `${this.state.currentUser.name} changed their name to ${username}`
+      content: `${this.state.clientName} changed their name to ${username}`
     }
-    this.setState({currentUser: {name: username}});
+    this.setState({clientName: username});
     const newMessage = {
       type: 'message',
       username: username,
       content
     }
-    this.state.socket.send(JSON.stringify([newNotification, newMessage]));
+    this.socket.send(JSON.stringify([newNotification, newMessage]));
   }
 }
 export default App;

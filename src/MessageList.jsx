@@ -8,6 +8,7 @@ function MessageList({messages}) {
       type={message.type}
       username={message.username}
       content={message.content}
+      color={message.color}
       />
   })
 

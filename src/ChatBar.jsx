@@ -1,10 +1,10 @@
 import React from 'react';
 
-function ChatBar({currentUser, handleMessage, handleNameChange, handleBothChange}) {
+function ChatBar({clientName, handleMessage, handleNameChange, handleBothChange}) {
   const handleMessageKeyUp = event => {
     const username = event.target.previousElementSibling.value;
     const content = event.target.value;
-    if (event.key === 'Enter' && username !== currentUser.name) {
+    if (event.key === 'Enter' && username !== clientName) {
       handleBothChange(username, content);
       event.target.value = '';
     } else if (event.key === 'Enter') {
@@ -15,7 +15,7 @@ function ChatBar({currentUser, handleMessage, handleNameChange, handleBothChange
 
   const handleNameKeyUp = event => {
     const username = event.target.value;
-    if (event.key === 'Enter' && username !== currentUser.name) {
+    if (event.key === 'Enter' && username !== clientName) {
       handleNameChange(username);
     }
   }
@@ -25,8 +25,8 @@ function ChatBar({currentUser, handleMessage, handleNameChange, handleBothChange
       <input
         className="chatbar-username"
         onKeyUp={handleNameKeyUp}
-        defaultValue={currentUser.name}
-        placeholder="Your Name (Optional)"
+        defaultValue={clientName}
+        placeholder="Your Name"
       />
       <input
         className="chatbar-message"
