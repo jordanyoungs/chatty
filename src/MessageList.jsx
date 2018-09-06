@@ -2,6 +2,7 @@ import React from 'react';
 import Message from './Message.jsx';
 
 function MessageList({messages}) {
+  // Loop over messages array and build a message component for each message
   const messageComponents = messages.map(message => {
     return <Message
       key={message.id}
@@ -12,6 +13,7 @@ function MessageList({messages}) {
       />
   })
 
+  // Render
   return(
     <main className="messages">
       {messageComponents}

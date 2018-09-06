@@ -3,7 +3,7 @@
 // Load up the application styles
 require('../styles/application.scss');
 
-// Render the top-level React component
+// Render the top-level React component (App)
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
