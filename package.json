@@ -5,6 +5,7 @@
   "scripts": {
     "lint": "eslint --ext .jsx,.js src",
     "start": "node server.js",
+    "server": "node chatty-server/server.js",
     "postinstall": "cd chatty-server && npm install"
   },
   "repository": {
