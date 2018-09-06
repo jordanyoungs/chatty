@@ -8,7 +8,8 @@ class App extends Component {
     super();
     this.state = {
       currentUser: {name: 'Bob'},
-      messages: []
+      messages: [],
+      numberOfUsers: 0
     };
   }
 
@@ -19,6 +20,11 @@ class App extends Component {
     socket.onmessage = event => {
       const messageArr = JSON.parse(event.data);
       console.log(messageArr);
+      if (messageArr[0].numberOfUsers) {
+        this.setState({
+          numberOfUsers: messageArr[0].numberOfUsers
+        });
+      }
       this.setState({
         messages: this.state.messages.concat(messageArr)
       });
@@ -28,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar numberOfUsers={this.state.numberOfUsers} />
         <MessageList messages={this.state.messages} />
         <ChatBar
           currentUser={this.state.currentUser}
