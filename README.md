@@ -24,7 +24,14 @@ Some of the functionality the page has:
 
 ## Screenshots
 
+Two clients side by side
 !["Screenshot of two clients on load"](https://github.com/jordanyoungs/chatty/blob/master/docs/Home.png?raw=true)
+
+Name change feature
 !["Screenshot of names changing"](https://github.com/jordanyoungs/chatty/blob/master/docs/NameChanges.png?raw=true)
+
+Messages being sent
 !["Screenshot of some messaging"](https://github.com/jordanyoungs/chatty/blob/master/docs/Messaging.png?raw=true)
+
+Client leaving chatroom
 !["Screenshot of a client leaving"](https://github.com/jordanyoungs/chatty/blob/master/docs/Leaving.png?raw=true)
